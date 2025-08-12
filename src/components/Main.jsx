@@ -61,7 +61,7 @@ export default function Main() {
           className="mx-auto mt-10 max-w-4xl"
         >
           {/* Replace with your real Wistia ID */}
-          <Wistia wistiaId="uj3ezczwdq" />
+          <Wistia wistiaId="" />
         </motion.div>
 
         <motion.div
