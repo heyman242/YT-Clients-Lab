@@ -25,9 +25,9 @@ const steps = [
     t: "Post-Production & SEO",
     d: "We edit, design thumbnails, and publish for you.",
     bullets: [
-      "Retention First Edit",
-      "Thumbnail + Title/Description",
-      "SEO + Schedule",
+      "Retention Editing",
+      "Click Worthy Thumbnails",
+      "Title Tags Description",
     ],
   },
   {
