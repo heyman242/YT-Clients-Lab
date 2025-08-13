@@ -7,3 +7,4 @@ export { default as BookCall } from "./BookCall";
 export { default as ThumbSlider } from "./ThumbSlider";
 export { default as ContentMachine } from "./ContentMachine";
 export { default as Navbar } from "./Navbar";
+export { default as Footer } from "./Footer";

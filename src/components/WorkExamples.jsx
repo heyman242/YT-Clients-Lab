@@ -37,7 +37,7 @@ export default function WorkExamples() {
         {/* Heading */}
         <div className="text-center mb-8 md:mb-10">
           <h2 className="text-34xl md:text-5xl font-extrabold tracking-tight">
-            Examples Of Our Work:
+            Examples Of Our Work
           </h2>
         </div>
 

@@ -7,7 +7,6 @@ const variants = {
   exit: (dir) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
 };
 
-// default to your local images
 const defaultThumbs = [
   "/Thumbs/1.png",
   "/Thumbs/2.png",
@@ -34,7 +33,7 @@ export default function ThumbSlider({
   };
 
   useEffect(() => {
-    timer.current && clearInterval(timer.current);
+    if (timer.current) clearInterval(timer.current);
     timer.current = setInterval(next, intervalMs);
     return () => timer.current && clearInterval(timer.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,20 +41,28 @@ export default function ThumbSlider({
 
   const pause = () => timer.current && clearInterval(timer.current);
   const resume = () => {
-    timer.current && clearInterval(timer.current);
+    if (timer.current) clearInterval(timer.current);
     timer.current = setInterval(next, intervalMs);
   };
 
   return (
     <section id="thumbnails" className="relative">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-24">
+        {/* Heading */}
+        <div className="mb-8 text-center md:mb-10">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+            Thumbnails
+          </h2>
+        </div>
+
+        {/* Slider */}
         <div
           className="relative mx-auto max-w-4xl select-none"
           onMouseEnter={pause}
           onMouseLeave={resume}
         >
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-2xl">
-            {/* subtle red glow behind */}
+            {/* soft red glow */}
             <div aria-hidden className="pointer-events-none absolute inset-0">
               <div className="absolute -left-24 -top-24 size-[28rem] rounded-full bg-red-600/20 blur-3xl" />
               <div className="absolute -right-24 -bottom-24 size-[26rem] rounded-full bg-red-500/15 blur-3xl" />
@@ -78,7 +85,7 @@ export default function ThumbSlider({
             </AnimatePresence>
           </div>
 
-          {/* controls only, no titles */}
+          {/* controls */}
           <div className="mt-4 flex items-center justify-between">
             <button
               onClick={prev}

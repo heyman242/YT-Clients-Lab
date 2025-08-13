@@ -46,13 +46,13 @@ export default function Main() {
         >
           {/* risk reversal as its own line */}
           <div className="mt-4">
-            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-1 text-2xl font-semibold text-white/90">
+            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-1 text-xl font-semibold text-white/90">
               (Or You Don’t Pay)
             </span>
           </div>
 
           {/* subcopy */}
-          <p className="mt-5 text-base md:text-xl text-white/80">
+          <p className="mt-5 text-base md:text-2xl text-white/90">
             Without you having any experience on camera or scripting a single
             line.
           </p>
@@ -64,7 +64,7 @@ export default function Main() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.15 }}
+          transition={{ duration: 0.45, delay: 1.0 }}
           className="mx-auto mt-10 max-w-4xl"
         >
           {/* Replace with your real Wistia ID */}
@@ -74,7 +74,7 @@ export default function Main() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.15 }}
+          transition={{ duration: 0.45, delay: 1.2 }}
           className="mx-auto mt-10 max-w-4xl"
         >
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
