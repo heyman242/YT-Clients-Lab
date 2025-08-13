@@ -20,7 +20,7 @@ function ytId(url = "") {
 const examples = [
   {
     name: "Michele Torti",
-    role: "Founder @ ",
+    role: "Founder @ JM Solutionss",
     url: "https://www.youtube.com/watch?v=4_5JLm7sMz4",
   },
   {
@@ -33,10 +33,10 @@ const examples = [
 export default function WorkExamples() {
   return (
     <section id="work" className="relative">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
+      <div className="mx-auto max-w-5xl px-6 py-10 md:py-10">
         {/* Heading */}
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+          <h2 className="text-34xl md:text-5xl font-extrabold tracking-tight">
             Examples Of Our Work:
           </h2>
         </div>
@@ -56,8 +56,8 @@ export default function WorkExamples() {
               >
                 {/* Name + Role */}
                 <header className="mb-3 text-center">
-                  <h3 className="text-lg font-semibold">{item.name}</h3>
-                  <p className="text-sm text-white/75 italic">{item.role}</p>
+                  <h3 className="text-2xl font-semibold">{item.name}</h3>
+                  <p className="text-xl text-white/75 italic">{item.role}</p>
                 </header>
 
                 {/* Video card */}
@@ -91,7 +91,7 @@ export default function WorkExamples() {
         <div className="mt-14 flex justify-center">
           <a
             href="#book"
-            className="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(239,68,68,0.45)] transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center rounded-xl bg-red-600 px-5 py-3 text-3xl font-semibold text-white shadow-[0_10px_30px_rgba(239,68,68,0.45)] transition-transform hover:-translate-y-0.5"
           >
             Book a Call
             <svg

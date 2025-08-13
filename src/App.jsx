@@ -4,24 +4,29 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import {
   Main,
+  Navbar,
   SiteShell,
   Method,
   WorkExamples,
   BookCall,
+  ContentMachine,
+  ThumbSlider,
 } from "./components/index";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <SiteShell>
-      {/* <Navbar /> */}
-      <Main />
-      <Method />
-      <WorkExamples />
-      <BookCall url="https://calendly.com/himanshu-ytclientslab/30min" />
-      {/* other sections go here: Services, Cases, Testimonials, CTA, Footer */}
-    </SiteShell>
+    <div className="relative min-h-screen isolate overflow-x-clip bg-black text-white">
+      <SiteShell>
+        <Navbar sticky={false} />
+        <Main />
+        <Method />
+        <WorkExamples />
+        <ThumbSlider />
+        <BookCall url="https://calendly.com/himanshu-ytclientslab/30min" />
+      </SiteShell>
+    </div>
   );
 }
 

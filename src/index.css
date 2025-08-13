@@ -1,25 +1,21 @@
 @import "tailwindcss";
 
-/* Global base overrides for a true full-black canvas */
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html,
   body,
   #root {
     height: 100%;
-    background-color: #000; /* full black */
+    background-color: #000;
+  }
+  html {
+    scroll-behavior: smooth;
   }
   body {
-    margin: 0; /* remove default margins */
-    color: #fff; /* default text color */
+    overflow-x: hidden;
   }
-
-  /* Optional: system fonts (cleaner than Vite's defaults) */
-  :root {
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-      Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 }
-
-/* (No extra button/a styles — Tailwind will style via classes) */

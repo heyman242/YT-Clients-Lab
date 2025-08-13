@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 
 const steps = [
   {
@@ -62,16 +62,15 @@ export default function Method() {
   const listRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: listRef,
-    offset: ["start 10%", "end 80%"], // tune where the progress starts/ends
+    offset: ["start 10%", "end 80%"], // when the progress should start/finish
   });
-  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="method" className="relative">
+    <section id="method" className="relative scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1.6fr]">
-          {/* LEFT: sticky header */}
-          <div className="lg:sticky lg:top-24 self-start">
+          {/* LEFT: sticky intro */}
+          <div className="self-start lg:sticky lg:top-24">
             <p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80">
               YT Clients Lab Method
             </p>
@@ -87,52 +86,44 @@ export default function Method() {
 
             <a
               href="#book"
-              className="mt-6 inline-flex items-center rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(239,68,68,0.45)] transition-transform hover:-translate-y-0.5"
+              className="mt-6 inline-flex items-center rounded-xl bg-red-600 px-5 py-3 text-sm md:text-base font-semibold text-white shadow-[0_10px_30px_rgba(239,68,68,0.45)] transition-transform hover:-translate-y-0.5"
             >
               Book a Call
               <svg
                 className="ml-2 size-4"
                 viewBox="0 0 20 20"
                 fill="currentColor"
+                aria-hidden
               >
                 <path d="M12.293 3.293a1 1 0 011.414 0l4.999 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L15.586 11H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
               </svg>
             </a>
           </div>
 
-          {/* RIGHT: scrolling steps with progress line */}
-          <div className="relative" ref={listRef}>
-            {/* background rail */}
+          {/* RIGHT: list + bounded progress rail */}
+          <div className="relative pb-2" ref={listRef}>
+            {/* Rail & progress (bounded by this container; no fixed vh height) */}
             <div
               aria-hidden
               className="pointer-events-none absolute left-4 top-0 bottom-0 hidden lg:block"
             >
-              {/* rail */}
+              {/* faint rail */}
               <div className="absolute inset-0 flex justify-center">
-                <div className="w-[2px] h-full rounded bg-white/10" />
+                <div className="h-full w-[2px] rounded bg-white/10" />
               </div>
-
               {/* progress */}
               <motion.div
-                className="absolute left-1/2 -translate-x-1/2 origin-top hidden lg:block"
+                className="absolute left-1/2 -translate-x-1/2 origin-top"
                 style={{ scaleY: scrollYProgress }}
               >
-                <div className="w-[2px] h-full rounded bg-gradient-to-b from-red-500 to-red-400 shadow-[0_0_20px_rgba(239,68,68,0.35)]" />
+                <div className="h-full w-[2px] rounded bg-gradient-to-b from-red-500 to-red-400 shadow-[0_0_20px_rgba(239,68,68,0.35)]" />
               </motion.div>
             </div>
-            {/* progress line */}
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute left-4 top-0 hidden lg:block"
-              style={{ transformOrigin: "top left", scaleY }}
-            >
-              <div className="h-[131vh] w-[2px] rounded bg-gradient-to-b from-red-500 to-red-400 shadow-[0_0_20px_rgba(239,68,68,0.35)]" />
-            </motion.div>
 
             <ol className="space-y-10">
               {steps.map((s, i) => (
                 <li key={s.t} className="relative pl-10">
-                  {/* dot */}
+                  {/* dot on the rail */}
                   <div
                     aria-hidden
                     className="absolute left-3.5 top-1.5 hidden lg:block"
@@ -140,7 +131,7 @@ export default function Method() {
                     <div className="size-3 rounded-full bg-red-500 ring-2 ring-white/15" />
                   </div>
 
-                  <div className="group rounded-2xl border border-white/10 bg-white/[0.04] p-5 hover:bg-white/[0.06] transition">
+                  <div className="group rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.06]">
                     <div className="mb-3 inline-flex items-center gap-2">
                       <span className="inline-flex items-center rounded-full bg-red-600/90 px-2 py-0.5 text-[10px] font-bold">
                         {String(i + 1).padStart(2, "0")}

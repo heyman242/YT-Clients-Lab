@@ -31,14 +31,14 @@ export default function BookCall({
 
   return (
     <section id="book" className="relative scroll-mt-24">
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <header className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+      <div className="mx-auto max-w-6xl px-6 py-2 md:py-2">
+        <header className="text-center">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
             Book a Call
           </h2>
-          <p className="mt-3 text-white/80">
-            Pick a time that works for you—let’s map your YouTube content
-            funnel.
+          <p className="mt-3 text-2xl text-white/90">
+            Pick a time that works for you, Let’s map your YouTube Content
+            Funnel!
           </p>
         </header>
 

@@ -4,3 +4,6 @@ export { default as SiteShell } from "./SiteShell";
 export { default as Method } from "./Method";
 export { default as WorkExamples } from "./WorkExamples";
 export { default as BookCall } from "./BookCall";
+export { default as ThumbSlider } from "./ThumbSlider";
+export { default as ContentMachine } from "./ContentMachine";
+export { default as Navbar } from "./Navbar";
