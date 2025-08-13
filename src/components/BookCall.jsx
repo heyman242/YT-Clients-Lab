@@ -37,8 +37,7 @@ export default function BookCall({
             Book a Call
           </h2>
           <p className="mt-3 text-2xl text-white/90">
-            Pick a time that works for you, Let’s map your YouTube Content
-            Funnel!
+            Let’s map your YouTube Content Funnel!
           </p>
         </header>
 
