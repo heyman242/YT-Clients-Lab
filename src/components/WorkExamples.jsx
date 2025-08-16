@@ -34,13 +34,12 @@ const examples = [
   },
 ];
 
-/** small helper to chunk an array */
 const chunk = (arr, size) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
     arr.slice(i * size, i * size + size)
   );
 
-function VideoCard({ item, wrapperClass = "" }) {
+function VideoCard({ item, className = "" }) {
   const id = ytId(item.url);
   return (
     <motion.article
@@ -48,7 +47,7 @@ function VideoCard({ item, wrapperClass = "" }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      className={wrapperClass}
+      className={className}
     >
       <header className="mb-3 text-center">
         <h3 className="text-2xl font-semibold">{item.name}</h3>
@@ -77,32 +76,31 @@ export default function WorkExamples() {
 
   return (
     <section id="work" className="relative">
-      <div className="mx-auto max-w-5xl px-6 py-10 md:py-10">
-        {/* Heading */}
+      {/* wider container so the two-up row is BIG */}
+      <div className="mx-auto max-w-7xl px-6 py-10 md:py-10">
         <div className="mb-8 text-center md:mb-10">
           <h2 className="text-34xl md:text-5xl font-extrabold tracking-tight">
             Examples Of Our Work
           </h2>
         </div>
 
-        {/* Top hero video */}
-        {hero && <VideoCard item={hero} wrapperClass="mx-auto max-w-4xl" />}
+        {/* Top hero (still large) */}
+        {hero && <VideoCard item={hero} className="mx-auto w-full max-w-4xl" />}
 
-        {/* Rows of two */}
+        {/* Two-up rows — now inside a 7xl container so each card is wider */}
         <div className="mt-12 space-y-14">
           {rows.map((pair, idx) => (
             <div
               key={idx}
-              className="grid gap-10 md:grid-cols-2 md:gap-8 items-start"
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 items-stretch"
             >
               {pair.map((item) => (
-                <VideoCard key={item.url} item={item} />
+                <VideoCard key={item.url} item={item} className="w-full" />
               ))}
             </div>
           ))}
         </div>
 
-        {/* CTA */}
         <div className="mt-14 flex justify-center">
           <a
             href="#book"
