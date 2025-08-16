@@ -1,22 +1,21 @@
 import { motion } from "framer-motion";
 
-/** Small helper: extract the YouTube ID from any common URL form */
+/** Extract a YouTube ID from common URL formats */
 function ytId(url = "") {
   try {
     const u = new URL(url);
     if (u.hostname.includes("youtu.be")) return u.pathname.slice(1);
     if (u.searchParams.get("v")) return u.searchParams.get("v");
-    // shorts or embed
     const m =
       u.pathname.match(/\/shorts\/([^/]+)/) ||
       u.pathname.match(/\/embed\/([^/]+)/);
     return m ? m[1] : "";
   } catch {
-    return url; // if user already passed an ID
+    return url;
   }
 }
 
-/** >>> Replace this array with your real videos (name, role/company, url) */
+/** Replace with your real videos */
 const examples = [
   {
     name: "Michele Torti",
@@ -28,66 +27,82 @@ const examples = [
     role: "Founder @ Courselaunchr",
     url: "https://www.youtube.com/watch?v=eFz-LcA2KZs",
   },
+  {
+    name: "Aidan Collins",
+    role: "Founder @ Velocityinbound",
+    url: "https://www.youtube.com/watch?v=e-vRXn8xhOU",
+  },
 ];
 
+/** small helper to chunk an array */
+const chunk = (arr, size) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i * size + size)
+  );
+
+function VideoCard({ item, wrapperClass = "" }) {
+  const id = ytId(item.url);
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+      className={wrapperClass}
+    >
+      <header className="mb-3 text-center">
+        <h3 className="text-2xl font-semibold">{item.name}</h3>
+        <p className="text-xl text-white/75 italic">{item.role}</p>
+      </header>
+
+      <div className="relative overflow-hidden rounded-2xl ring-1 ring-white/10 shadow-2xl">
+        <div className="aspect-[16/9] bg-black/40">
+          <iframe
+            title={`${item.name} – YouTube`}
+            src={`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`}
+            className="h-full w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function WorkExamples() {
+  const [hero, ...rest] = examples;
+  const rows = chunk(rest, 2);
+
   return (
     <section id="work" className="relative">
       <div className="mx-auto max-w-5xl px-6 py-10 md:py-10">
         {/* Heading */}
-        <div className="text-center mb-8 md:mb-10">
+        <div className="mb-8 text-center md:mb-10">
           <h2 className="text-34xl md:text-5xl font-extrabold tracking-tight">
             Examples Of Our Work
           </h2>
         </div>
 
-        {/* List */}
-        <div className="space-y-16">
-          {examples.map((item, i) => {
-            const id = ytId(item.url);
-            return (
-              <motion.article
-                key={id + i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                className="mx-auto max-w-4xl"
-              >
-                {/* Name + Role */}
-                <header className="mb-3 text-center">
-                  <h3 className="text-2xl font-semibold">{item.name}</h3>
-                  <p className="text-xl text-white/75 italic">{item.role}</p>
-                </header>
+        {/* Top hero video */}
+        {hero && <VideoCard item={hero} wrapperClass="mx-auto max-w-4xl" />}
 
-                {/* Video card */}
-                <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl">
-                  {/* soft red/black glow behind the video */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0"
-                  >
-                    <div className="absolute -left-24 -top-24 size-[28rem] rounded-full blur-3xl" />
-                    <div className="absolute -right-24 -bottom-24 size-[26rem] rounded-full  blur-3xl" />
-                  </div>
-
-                  <div className="aspect-[16/9] bg-black/40">
-                    <iframe
-                      title={`${item.name} – YouTube`}
-                      src={`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`}
-                      className="h-full w-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </motion.article>
-            );
-          })}
+        {/* Rows of two */}
+        <div className="mt-12 space-y-14">
+          {rows.map((pair, idx) => (
+            <div
+              key={idx}
+              className="grid gap-10 md:grid-cols-2 md:gap-8 items-start"
+            >
+              {pair.map((item) => (
+                <VideoCard key={item.url} item={item} />
+              ))}
+            </div>
+          ))}
         </div>
 
-        {/* Optional CTA under list */}
+        {/* CTA */}
         <div className="mt-14 flex justify-center">
           <a
             href="#book"

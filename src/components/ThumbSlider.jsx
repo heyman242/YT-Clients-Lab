@@ -13,6 +13,8 @@ const defaultThumbs = [
   "/Thumbs/3.png",
   "/Thumbs/4.png",
   "/Thumbs/5.png",
+  "/Thumbs/6.png",
+  "/Thumbs/7.png",
 ];
 
 export default function ThumbSlider({
