@@ -60,16 +60,7 @@ export default function Main() {
 
         {/* CTAs */}
 
-        {/* VSL */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 1.0 }}
-          className="mx-auto mt-10 max-w-4xl"
-        >
-          {/* Replace with your real Wistia ID */}
-          <Wistia wistiaId="" />
-        </motion.div>
+      
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
