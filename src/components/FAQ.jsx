@@ -10,7 +10,7 @@ const faqs = [
   {
     question: "Do you guarantee results?",
     answer:
-      "While we can't guarantee specific numbers (no one honestly can), we have a proven track record of delivering results. Our clients have generated over $500K+ in revenue and booked 1000+ calls through our strategies.",
+      "While we can't guarantee specific numbers (no one honestly can), we have a proven track record of delivering results. Our clients have generated over $250K+ in revenue and booked 350+ calls through our strategies.",
   },
   {
     question: "What's your pricing?",
@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "How much of my time is required?",
     answer:
-      "We handle everything from strategy to editing to optimization. You'll typically need 2-4 hours per week for filming/recording. We take care of the rest.",
+      "We handle everything from strategy to editing to optimization. You'll typically need 30 min per week for filming/recording. We take care of the rest.",
   },
   {
     question: "What if I'm just starting on YouTube?",

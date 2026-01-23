@@ -19,25 +19,22 @@ function ytId(url = "") {
 /** Add your YouTube video URLs here - The slider will loop through these infinitely */
 const examples = [
   {
-    url: "https://www.youtube.com/watch?v=4_5JLm7sMz4",
-    thumbnail: `https://img.youtube.com/vi/4_5JLm7sMz4/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=g8TwasIoC3Q",
   },
   {
-    url: "https://www.youtube.com/watch?v=eFz-LcA2KZs",
-    thumbnail: `https://img.youtube.com/vi/eFz-LcA2KZs/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=RVLCNy5AGls",
   },
   {
-    url: "https://www.youtube.com/watch?v=e-vRXn8xhOU",
-    thumbnail: `https://img.youtube.com/vi/e-vRXn8xhOU/maxresdefault.jpg`,
-  },
-  // Add more videos here for a longer slider
-  {
-    url: "https://www.youtube.com/watch?v=4_5JLm7sMz4", // Replace with real URL
-    thumbnail: `https://img.youtube.com/vi/4_5JLm7sMz4/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=r1wea1evlgk",
   },
   {
-    url: "https://www.youtube.com/watch?v=eFz-LcA2KZs", // Replace with real URL
-    thumbnail: `https://img.youtube.com/vi/eFz-LcA2KZs/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=tf1mnCVWJkQ", // Replace with real URL
+  },
+  {
+    url: "https://www.youtube.com/watch?v=BTqzP4UYlL8", // Replace with real URL
+  },
+  {
+    url: "https://www.youtube.com/watch?v=EKpIcEUUMec", // Replace with real URL
   },
 ];
 
@@ -61,9 +58,9 @@ function VideoSlideCard({ item }) {
               className="relative aspect-[16/9] cursor-pointer"
               onClick={() => setIsPlaying(true)}
             >
-              {/* Thumbnail Image */}
+              {/* Thumbnail Image - auto-fetched from YouTube */}
               <img
-                src={item.thumbnail}
+                src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
                 alt="YouTube Video Thumbnail"
                 className="h-full w-full object-cover"
                 loading="lazy"

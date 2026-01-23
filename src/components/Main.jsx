@@ -44,18 +44,6 @@ export default function Main() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mx-auto mt-6 max-w-[1200px] text-center"
         >
-          {/* risk reversal as its own line */}
-          <div className="mt-4">
-            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-1 text-xl font-semibold text-white/90">
-              (Or You Don’t Pay)
-            </span>
-          </div>
-
-          {/* subcopy */}
-          <p className="mt-5 text-base md:text-2xl text-white/90">
-            Without you having any experience on camera or scripting a single
-            line.
-          </p>
         </motion.div>
 
         {/* CTAs */}
