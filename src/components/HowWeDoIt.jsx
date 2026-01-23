@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 /** Extract a YouTube ID from common URL formats */
 function ytId(url = "") {
@@ -17,27 +17,18 @@ function ytId(url = "") {
 }
 
 /** Add your YouTube video URLs here - The slider will loop through these infinitely */
-const examples = [
+const videos = [
   {
-    url: "https://www.youtube.com/watch?v=4_5JLm7sMz4",
-    thumbnail: `https://img.youtube.com/vi/4_5JLm7sMz4/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=ZSH20Y9V0d8", // Replace with your YouTube URL
   },
   {
-    url: "https://www.youtube.com/watch?v=eFz-LcA2KZs",
-    thumbnail: `https://img.youtube.com/vi/eFz-LcA2KZs/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=ZSH20Y9V0d8", // Replace with your YouTube URL
   },
   {
-    url: "https://www.youtube.com/watch?v=e-vRXn8xhOU",
-    thumbnail: `https://img.youtube.com/vi/e-vRXn8xhOU/maxresdefault.jpg`,
-  },
-  // Add more videos here for a longer slider
-  {
-    url: "https://www.youtube.com/watch?v=4_5JLm7sMz4", // Replace with real URL
-    thumbnail: `https://img.youtube.com/vi/4_5JLm7sMz4/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=lqt1xZwJBjA", // Replace with your YouTube URL
   },
   {
-    url: "https://www.youtube.com/watch?v=eFz-LcA2KZs", // Replace with real URL
-    thumbnail: `https://img.youtube.com/vi/eFz-LcA2KZs/maxresdefault.jpg`,
+    url: "https://www.youtube.com/watch?v=lqt1xZwJBjA", // Replace with your YouTube URL
   },
 ];
 
@@ -61,9 +52,9 @@ function VideoSlideCard({ item }) {
               className="relative aspect-[16/9] cursor-pointer"
               onClick={() => setIsPlaying(true)}
             >
-              {/* Thumbnail Image */}
+              {/* Thumbnail Image - auto-fetched from YouTube */}
               <img
-                src={item.thumbnail}
+                src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
                 alt="YouTube Video Thumbnail"
                 className="h-full w-full object-cover"
                 loading="lazy"
@@ -103,21 +94,21 @@ function VideoSlideCard({ item }) {
   );
 }
 
-export default function WorkExamples() {
+export default function HowWeDoIt() {
   const [isPaused, setIsPaused] = useState(false);
 
   // Duplicate the array for seamless infinite loop
-  const duplicatedExamples = [...examples, ...examples];
+  const duplicatedVideos = [...videos, ...videos];
 
   return (
-    <section id="work" className="relative overflow-hidden">
-      {/* Red glow effects */}
+    <section id="how-we-do-it" className="relative overflow-hidden">
+      {/* Background glow */}
       <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute right-1/3 top-1/4 h-[450px] w-[450px] animate-pulse rounded-full bg-red-600/12 blur-[100px] animation-delay-1000" />
-        <div className="absolute left-1/3 bottom-1/3 h-[400px] w-[400px] animate-pulse rounded-full bg-red-500/10 blur-[90px] animation-delay-3000" />
+        <div className="absolute left-0 top-1/3 h-[400px] w-[400px] animate-pulse rounded-full bg-red-600/10 blur-[100px]" />
+        <div className="absolute right-0 bottom-1/4 h-[300px] w-[300px] animate-pulse rounded-full bg-red-500/8 blur-[80px]" />
       </div>
 
-      <div className="relative z-10 py-16 md:py-24">
+      <div className="relative z-10 py-20 md:py-28">
         {/* Section Header */}
         <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
           <motion.div
@@ -127,8 +118,14 @@ export default function WorkExamples() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              Examples Of Our Work
+              How We Do It{" "}
+              <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
+                For Our Clients
+              </span>
             </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg md:text-xl text-white/80">
+              Watch our videos to learn our strategies and methods.
+            </p>
           </motion.div>
         </div>
 
@@ -152,31 +149,10 @@ export default function WorkExamples() {
               },
             }}
           >
-            {duplicatedExamples.map((item, index) => (
+            {duplicatedVideos.map((item, index) => (
               <VideoSlideCard key={`${item.url}-${index}`} item={item} />
             ))}
           </motion.div>
-        </div>
-
-        {/* CTA Button */}
-        <div className="mt-12 flex justify-center px-6">
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            href="#book"
-            className="inline-flex items-center rounded-xl bg-red-600 px-8 py-4 text-lg md:text-xl font-semibold text-white shadow-[0_10px_30px_rgba(239,68,68,0.45)] transition-transform hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Get Similar Results
-            <svg
-              className="ml-2 size-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M12.293 3.293a1 1 0 011.414 0l4.999 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L15.586 11H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
-            </svg>
-          </motion.a>
         </div>
       </div>
     </section>

@@ -8,3 +8,7 @@ export { default as ThumbSlider } from "./ThumbSlider";
 export { default as ContentMachine } from "./ContentMachine";
 export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
+export { default as Stats } from "./Stats";
+export { default as Results } from "./Results";
+export { default as FAQ } from "./FAQ";
+export { default as HowWeDoIt } from "./HowWeDoIt";

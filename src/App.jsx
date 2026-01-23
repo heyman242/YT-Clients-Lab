@@ -12,6 +12,10 @@ import {
   ContentMachine,
   ThumbSlider,
   Footer,
+  Stats,
+  Results,
+  FAQ,
+  HowWeDoIt,
 } from "./components/index";
 
 function App() {
@@ -22,10 +26,13 @@ function App() {
       <SiteShell>
         <Navbar sticky={true} />
         <Main />
+        <Stats />
+        <Results />
         <Method />
         <WorkExamples />
-        <ThumbSlider />
         <BookCall url="https://calendly.com/himanshu-ytclientslab/30min" />
+        <FAQ />
+        <HowWeDoIt />
         <Footer
           socials={{
             x: "https://x.com/hvnterhimanshu",
