@@ -36,6 +36,15 @@ const examples = [
   {
     url: "https://www.youtube.com/watch?v=EKpIcEUUMec", // Replace with real URL
   },
+  {
+    url: "https://www.youtube.com/watch?v=GHmJoCvRp2I", // Replace with real URL
+  },
+  {
+    url: "https://www.youtube.com/watch?v=7HbhGbMwt9w", // Replace with real URL
+  },
+  {
+    url: "https://www.youtube.com/watch?v=53OoHeQIc34", // Replace with real URL
+  },
 ];
 
 /** Infinite Slider Card Component */
