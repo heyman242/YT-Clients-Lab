@@ -22,17 +22,16 @@ export default function Main() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mx-auto mt-6 max-w-[1200px] text-center"
+          className="mx-auto mt-6 max-w-[1400px] text-center"
         >
-          <h1
-            className="text-white font-extrabold leading-tight tracking-tight
-                 text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
-          >
-            <span className="block lg:whitespace-nowrap">
+          <h1 className="text-white font-extrabold leading-tight tracking-tight text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+            <span className="whitespace-nowrap">
               We Will Add You{" "}
-              <span className="text-red-500">10–15 Qualified Sales Calls</span>
+              <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
+                10–15 Qualified Sales Calls
+              </span>
             </span>
-            <span className="block">
+            <span className="block mt-2">
               Every Month Through a YouTube Content Funnel
             </span>
           </h1>
