@@ -21,15 +21,11 @@ const videos = [
   {
     url: "https://www.youtube.com/watch?v=ZSH20Y9V0d8", // Replace with your YouTube URL
   },
-  {
-    url: "https://www.youtube.com/watch?v=ZSH20Y9V0d8", // Replace with your YouTube URL
-  },
+
   {
     url: "https://www.youtube.com/watch?v=lqt1xZwJBjA", // Replace with your YouTube URL
   },
-  {
-    url: "https://www.youtube.com/watch?v=lqt1xZwJBjA", // Replace with your YouTube URL
-  },
+
 ];
 
 /** Infinite Slider Card Component */
