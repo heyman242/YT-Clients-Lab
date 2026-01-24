@@ -30,7 +30,7 @@ function App() {
         <Results />
         <Method />
         <WorkExamples />
-        <BookCall url="https://calendly.com/himanshu-ytclientslab/30min" />
+        <BookCall />
         <FAQ />
         <HowWeDoIt />
         <Footer

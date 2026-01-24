@@ -24,7 +24,7 @@ const stats = [
   },
   {
     label: "Views Generated",
-    value: 200000,
+    value: 2000000,
     prefix: "",
     suffix: "+",
   },

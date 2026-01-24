@@ -24,7 +24,7 @@ const socials = [
   },
   {
     name: "YouTube",
-    href: "https://www.youtube.com/@himanshubobade6960/videos",
+    href: "https://www.youtube.com/channel/UCFkA3EWYIKoQ1sGYgG3GcQw",
     icon: (
       <svg viewBox="0 0 24 24" className="size-5" fill="currentColor">
         <path d="M23 12s0-3.4-.43-5a3.1 3.1 0 0 0-2.2-2.2C18.7 4.4 12 4.4 12 4.4s-6.7 0-8.4.4A3.1 3.1 0 0 0 1.4 7C1 8.6 1 12 1 12s0 3.4.4 5a3.1 3.1 0 0 0 2.2 2.2c1.7.4 8.4.4 8.4.4s6.7 0 8.4-.4a3.1 3.1 0 0 0 2.2-2.2c.4-1.6.4-5 .4-5ZM10 15.5v-7l6 3.5-6 3.5Z" />
