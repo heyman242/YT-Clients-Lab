@@ -1,7 +1,59 @@
 import { motion } from "framer-motion";
-import Wistia from "./Wistia";
+import { useEffect, useRef, useState } from "react";
 
 export default function Main() {
+  const youtubeVideoId = "WYKQ8ddAOHs";
+  const playerRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    // Load YouTube IFrame API
+    if (!window.YT) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
+
+    window.onYouTubeIframeAPIReady = () => {
+      playerRef.current = new window.YT.Player("yt-player", {
+        videoId: youtubeVideoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 1,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+        },
+        events: {
+          onReady: () => setIsReady(true),
+        },
+      });
+    };
+
+    // If API is already loaded
+    if (window.YT && window.YT.Player) {
+      window.onYouTubeIframeAPIReady();
+    }
+
+    return () => {
+      if (playerRef.current?.destroy) {
+        playerRef.current.destroy();
+      }
+    };
+  }, []);
+
+  const handleUnmute = () => {
+    if (playerRef.current && isReady) {
+      playerRef.current.seekTo(0);
+      playerRef.current.unMute();
+      playerRef.current.playVideo();
+      setIsMuted(false);
+    }
+  };
+
   return (
     <header id="home" className="relative">
       <div className="relative z-10 mx-auto max-w-6xl px-6 pt-8 ">
@@ -37,18 +89,33 @@ export default function Main() {
           </h1>
         </motion.div>
 
+        {/* VSL Video */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mx-auto mt-6 max-w-[1200px] text-center"
+          className="mx-auto mt-10 max-w-4xl"
         >
+          <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl shadow-red-500/20" style={{ paddingBottom: "56.25%" }}>
+            <div id="yt-player" className="absolute top-0 left-0 h-full w-full" />
+            {isMuted && (
+              <button
+                onClick={handleUnmute}
+                className="absolute inset-0 z-10 flex cursor-pointer items-center justify-center bg-black/30 transition-opacity hover:bg-black/40"
+                aria-label="Click to unmute and play from start"
+              >
+                <div className="flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 text-lg font-semibold text-gray-900 shadow-lg">
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                  </svg>
+                  Click to Unmute
+                </div>
+              </button>
+            )}
+          </div>
         </motion.div>
 
         {/* CTAs */}
-
-      
-
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
