@@ -16,6 +16,11 @@ const clientResults = [
     description: "Booked 20+ calls In 2 months",
     youtubeId: "tg-oKTRR5qg", // Replace with actual YouTube video ID
   },
+  {
+    name: "Stijn Verhagen",
+    description: "Generated 100+ Leads In 3 months",
+    youtubeId: "mxZt-H9Ex9Q", // Replace with actual YouTube video ID
+  },
 ];
 
 function VideoCard({ client, index }) {
