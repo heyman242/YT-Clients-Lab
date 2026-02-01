@@ -92,7 +92,7 @@ function StatCard({ stat, index }) {
       className="relative group"
     >
       {/* Card */}
-      <div className="relative h-full min-h-[280px] overflow-visible rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-8 md:p-12 backdrop-blur-sm transition-all duration-300 hover:border-red-500/30 hover:shadow-[0_0_40px_rgba(239,68,68,0.15)]">
+      <div className="relative h-full min-h-[180px] md:min-h-[280px] overflow-visible rounded-2xl md:rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-5 md:p-8 lg:p-12 backdrop-blur-sm transition-all duration-300 hover:border-red-500/30 hover:shadow-[0_0_40px_rgba(239,68,68,0.15)]">
         {/* Animated gradient background on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-red-600/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 

@@ -34,7 +34,7 @@ function VideoSlideCard({ item }) {
   const id = ytId(item.url);
 
   return (
-    <div className="flex-shrink-0 w-[500px] md:w-[640px] lg:w-[720px] px-4">
+    <div className="flex-shrink-0 w-[280px] sm:w-[400px] md:w-[640px] lg:w-[720px] px-2 md:px-4">
       <motion.div
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.2 }}
@@ -61,9 +61,9 @@ function VideoSlideCard({ item }) {
 
               {/* Play Button */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-red-600 shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all group-hover:scale-110 group-hover:shadow-[0_0_70px_rgba(239,68,68,0.9)]">
+                <div className="flex h-14 w-14 md:h-24 md:w-24 items-center justify-center rounded-full bg-red-600 shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all group-hover:scale-110 group-hover:shadow-[0_0_70px_rgba(239,68,68,0.9)]">
                   <svg
-                    className="ml-1.5 h-10 w-10 text-white"
+                    className="ml-1 h-6 w-6 md:ml-1.5 md:h-10 md:w-10 text-white"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >

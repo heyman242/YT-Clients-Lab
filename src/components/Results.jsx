@@ -21,6 +21,10 @@ const clientResults = [
     description: "Generated 100+ Leads In 3 months",
     youtubeId: "mxZt-H9Ex9Q", // Replace with actual YouTube video ID
   },
+  {
+    name: "Joe Milnes",
+    youtubeId: "Im47fiTX3Jg", 
+  },
 ];
 
 function VideoCard({ client, index }) {

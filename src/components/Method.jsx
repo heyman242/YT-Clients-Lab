@@ -54,7 +54,7 @@ export default function Method() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1.6fr]">
           {/* LEFT — sticky intro */}
           <div className="self-start lg:sticky lg:top-24">
-            <p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-lg font-semibold text-white/80">
+            <p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm md:text-lg font-semibold text-white/80">
               YT Clients Lab Method
             </p>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
@@ -63,7 +63,7 @@ export default function Method() {
               Your Pipeline
               <br className="hidden sm:block" /> With YouTube
             </h2>
-            <p className="mt-4 max-w-md text-xl text-white/90">
+            <p className="mt-4 max-w-md text-base md:text-xl text-white/90">
               The 5-step system we use to research, script, produce and optimize
               long-form YouTube content that fills your calendar with qualified
               sales calls.
@@ -117,12 +117,12 @@ export default function Method() {
                     {/* brand logo on the right */}
 
                     <div className="mb-3">
-                      <h3 className="text-4xl font-semibold">{s.t}</h3>
+                      <h3 className="text-xl md:text-2xl lg:text-4xl font-semibold">{s.t}</h3>
                     </div>
 
-                    <p className="text-xl text-white/90">{s.d}</p>
+                    <p className="text-base md:text-xl text-white/90">{s.d}</p>
 
-                    <ul className="mt-3 space-y-1.5 text-xl text-white/70">
+                    <ul className="mt-3 space-y-1.5 text-base md:text-xl text-white/70">
                       {s.bullets.map((b) => (
                         <li key={b} className="flex items-start gap-2">
                           <span className="mt-2.5 size-2.5 rounded-full bg-red-500/80" />

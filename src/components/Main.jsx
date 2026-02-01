@@ -56,7 +56,7 @@ export default function Main() {
 
   return (
     <header id="home" className="relative">
-      <div className="relative z-10 mx-auto max-w-6xl px-6 pt-8 ">
+      <div className="relative z-10 mx-auto max-w-8xl px-6 pt-8 ">
         {/* audience pill */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -64,7 +64,7 @@ export default function Main() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex justify-center"
         >
-          <span className="inline-flex items-center rounded-full border border-red-500/40 bg-white/5 px-4 py-1 text-2xl font-semibold text-white/90">
+          <span className="inline-flex items-center rounded-full border border-red-500/40 bg-white/5 px-3 py-1 text-sm md:text-lg lg:text-2xl font-semibold text-white/90 text-center">
             Coaches, Agency Owners & SaaS Companies
           </span>
         </motion.div>
@@ -74,10 +74,10 @@ export default function Main() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mx-auto mt-6 max-w-[1400px] text-center"
+          className="mx-auto mt-6 max-w-[1800px] text-center"
         >
-          <h1 className="text-white font-extrabold leading-tight tracking-tight text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-            <span className="whitespace-nowrap">
+          <h1 className="text-white font-extrabold leading-tight tracking-tight text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center">
+            <span className="block">
               We Will Add You{" "}
               <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
                 10–15 Qualified Sales Calls
@@ -125,7 +125,7 @@ export default function Main() {
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <a
               href="#book"
-              className="group inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 text-3xl font-semibold text-white shadow-lg shadow-red-600/30 transition-transform hover:-translate-y-0.5 active:translate-y-0"
+              className="group inline-flex items-center justify-center rounded-xl bg-red-600 px-5 py-3 text-lg md:text-xl lg:text-2xl font-semibold text-white shadow-lg shadow-red-600/30 transition-transform hover:-translate-y-0.5 active:translate-y-0"
             >
               Book a Call
               <svg
