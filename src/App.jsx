@@ -27,6 +27,7 @@ function App() {
         <Navbar sticky={true} />
         <Main />
         <Stats />
+        <Results/>
         <Method />
         <WorkExamples />
         <BookCall />
