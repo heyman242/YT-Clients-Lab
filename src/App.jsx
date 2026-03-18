@@ -1,6 +1,5 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useEffect } from "react";
+import Lenis from "lenis";
 import "./App.css";
 import {
   Main,
@@ -9,25 +8,43 @@ import {
   Method,
   WorkExamples,
   BookCall,
-  ContentMachine,
-  ThumbSlider,
   Footer,
   Stats,
   Results,
   FAQ,
   HowWeDoIt,
+  ProofGallery,
 } from "./components/index";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // Initialize Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
-    <div className="relative min-h-screen isolate overflow-x-clip bg-black text-white">
+    <div className="relative min-h-screen isolate overflow-x-clip bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">
       <SiteShell>
         <Navbar sticky={true} />
         <Main />
         <Stats />
-        <Results/>
+        <ProofGallery />
+        <Results />
         <Method />
         <WorkExamples />
         <BookCall />

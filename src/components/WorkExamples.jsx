@@ -16,174 +16,121 @@ function ytId(url = "") {
   }
 }
 
-/** Add your YouTube video URLs here - The slider will loop through these infinitely */
+// 8 videos for 2x4 grid
 const examples = [
-  {
-    url: "https://www.youtube.com/watch?v=g8TwasIoC3Q",
-  },
-  {
-    url: "https://www.youtube.com/watch?v=RVLCNy5AGls",
-  },
-  {
-    url: "https://www.youtube.com/watch?v=r1wea1evlgk",
-  },
-  {
-    url: "https://www.youtube.com/watch?v=tf1mnCVWJkQ", // Replace with real URL
-  },
-  {
-    url: "https://www.youtube.com/watch?v=BTqzP4UYlL8", // Replace with real URL
-  },
-  {
-    url: "https://www.youtube.com/watch?v=EKpIcEUUMec", // Replace with real URL
-  },
-  {
-    url: "https://www.youtube.com/watch?v=GHmJoCvRp2I", // Replace with real URL
-  },
-  {
-    url: "https://www.youtube.com/watch?v=7HbhGbMwt9w", // Replace with real URL
-  },
-  {
-    url: "https://www.youtube.com/watch?v=53OoHeQIc34", // Replace with real URL
-  },
+  { url: "https://www.youtube.com/watch?v=g8TwasIoC3Q" },
+  { url: "https://www.youtube.com/watch?v=RVLCNy5AGls" },
+  { url: "https://www.youtube.com/watch?v=r1wea1evlgk" },
+  { url: "https://www.youtube.com/watch?v=tf1mnCVWJkQ" },
+  { url: "https://www.youtube.com/watch?v=BTqzP4UYlL8" },
+  { url: "https://www.youtube.com/watch?v=EKpIcEUUMec" },
+  { url: "https://www.youtube.com/watch?v=GHmJoCvRp2I" },
+  { url: "https://www.youtube.com/watch?v=7HbhGbMwt9w" },
 ];
 
-/** Infinite Slider Card Component */
-function VideoSlideCard({ item }) {
+function VideoCard({ item, index }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const id = ytId(item.url);
 
   return (
-    <div className="flex-shrink-0 w-[280px] sm:w-[400px] md:w-[640px] lg:w-[720px] px-2 md:px-4">
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.2 }}
-        className="group relative"
-      >
-        {/* Video Container */}
-        <div className="relative overflow-hidden rounded-3xl ring-2 ring-white/10 shadow-2xl bg-black/40">
-          {!isPlaying ? (
-            // Thumbnail with Play Button
-            <div
-              className="relative aspect-[16/9] cursor-pointer"
-              onClick={() => setIsPlaying(true)}
-            >
-              {/* Thumbnail Image - auto-fetched from YouTube */}
-              <img
-                src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
-                alt="YouTube Video Thumbnail"
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      className="group"
+    >
+      <div className="image-frame bg-white">
+        {!isPlaying ? (
+          <div
+            className="relative aspect-[16/9] cursor-pointer"
+            onClick={() => setIsPlaying(true)}
+          >
+            <img
+              src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+              alt="YouTube Video Thumbnail"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
 
-              {/* Subtle Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
 
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex h-14 w-14 md:h-24 md:w-24 items-center justify-center rounded-full bg-red-600 shadow-[0_0_50px_rgba(239,68,68,0.7)] transition-all group-hover:scale-110 group-hover:shadow-[0_0_70px_rgba(239,68,68,0.9)]">
-                  <svg
-                    className="ml-1 h-6 w-6 md:ml-1.5 md:h-10 md:w-10 text-white"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-[var(--color-accent)] shadow-lg transition-transform group-hover:scale-110">
+                <svg
+                  className="ml-1 h-5 w-5 md:h-6 md:w-6 text-white"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
               </div>
             </div>
-          ) : (
-            // Embedded Video Player
-            <div className="aspect-[16/9]">
-              <iframe
-                title="YouTube Video"
-                src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-          )}
-        </div>
-      </motion.div>
-    </div>
+          </div>
+        ) : (
+          <div className="aspect-[16/9]">
+            <iframe
+              title="YouTube Video"
+              src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
+              className="h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        )}
+      </div>
+    </motion.div>
   );
 }
 
 export default function WorkExamples() {
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Duplicate the array for seamless infinite loop
-  const duplicatedExamples = [...examples, ...examples];
-
   return (
-    <section id="work" className="relative overflow-hidden">
-      {/* Red glow effects */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute right-1/3 top-1/4 h-[450px] w-[450px] animate-pulse rounded-full bg-red-600/12 blur-[100px] animation-delay-1000" />
-        <div className="absolute left-1/3 bottom-1/3 h-[400px] w-[400px] animate-pulse rounded-full bg-red-500/10 blur-[90px] animation-delay-3000" />
-      </div>
-
-      <div className="relative z-10 py-16 md:py-24">
+    <section id="work" className="relative bg-[var(--color-bg-primary)]">
+      <div className="mx-auto max-w-[1600px] px-8 py-20 md:py-28">
         {/* Section Header */}
-        <div className="mx-auto max-w-7xl px-6 mb-12 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              Examples Of Our Work
-            </h2>
-          </motion.div>
-        </div>
-
-        {/* Infinite Horizontal Slider */}
-        <div
-          className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
         >
-          <motion.div
-            className="flex"
-            animate={{
-              x: isPaused ? 0 : ["0%", "-50%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
-          >
-            {duplicatedExamples.map((item, index) => (
-              <VideoSlideCard key={`${item.url}-${index}`} item={item} />
-            ))}
-          </motion.div>
+          <span className="badge-accent mb-4 inline-block">Portfolio</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-text-primary)]">
+            Examples Of{" "}
+            <span className="text-[var(--color-accent)]">Our Work</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-secondary)]">
+            Videos we've produced that drive results for our clients.
+          </p>
+        </motion.div>
+
+        {/* 2 columns x 4 rows Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {examples.slice(0, 8).map((item, index) => (
+            <VideoCard key={item.url} item={item} index={index} />
+          ))}
         </div>
 
         {/* CTA Button */}
-        <div className="mt-12 flex justify-center px-6">
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            href="#book"
-            className="inline-flex items-center rounded-xl bg-red-600 px-8 py-4 text-lg md:text-xl font-semibold text-white shadow-[0_10px_30px_rgba(239,68,68,0.45)] transition-transform hover:-translate-y-0.5 active:translate-y-0"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-12 flex justify-center"
+        >
+          <a href="#book" className="btn-primary text-lg">
             Get Similar Results
             <svg
-              className="ml-2 size-5"
+              className="size-5"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path d="M12.293 3.293a1 1 0 011.414 0l4.999 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L15.586 11H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
             </svg>
-          </motion.a>
-        </div>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

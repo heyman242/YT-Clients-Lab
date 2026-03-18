@@ -1,21 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    /* Halva System Color Palette */
+    --color-bg-primary: #f7f0eb;
+    --color-bg-secondary: #f0ede4;
+    --color-bg-card: #ffffff;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #4a4a4a;
+    --color-text-muted: #6b6b6b;
+    --color-accent: #ff0501;
+    --color-accent-hover: #e00400;
+    --color-border: #e0ddd5;
+    --color-border-dashed: #c5c2ba;
+  }
+
   html,
   body,
   #root {
     height: 100%;
-    background-color: #000;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
+
   html {
     scroll-behavior: smooth;
   }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
   body {
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
   *,
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* Primary CTA Button - Halva Style */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--color-accent);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 30px;
+    box-shadow: 0 12px 15px rgba(254, 96, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 20px rgba(254, 96, 55, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    background-color: transparent;
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-border-dashed);
+  }
+
+  /* Dashed Card - Halva Style */
+  .card-dashed {
+    background-color: var(--color-bg-card);
+    border: 1px dashed var(--color-border-dashed);
+    border-radius: 25px;
+    padding: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .card-dashed:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Badge/Pill Style */
+  .badge-accent {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 1rem;
+    background-color: rgba(255, 5, 1, 0.1);
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 5, 1, 0.2);
+  }
+
+  /* Section Container */
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Sticky Scroll Container */
+  .sticky-section {
+    position: sticky;
+    top: 130px;
+  }
+
+  /* Image with frame */
+  .image-frame {
+    border: 7px solid white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

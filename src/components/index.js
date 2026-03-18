@@ -12,3 +12,4 @@ export { default as Stats } from "./Stats";
 export { default as Results } from "./Results";
 export { default as FAQ } from "./FAQ";
 export { default as HowWeDoIt } from "./HowWeDoIt";
+export { default as ProofGallery } from "./ProofGallery";

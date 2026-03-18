@@ -36,15 +36,15 @@ const faqs = [
 
 function FAQItem({ faq, isOpen, onToggle }) {
   return (
-    <div className="border-b border-white/10">
+    <div className="border-b border-dashed border-[var(--color-border-dashed)] last:border-b-0">
       <button
         onClick={onToggle}
         className="flex w-full items-center justify-between py-6 text-left"
       >
-        <span className="text-lg md:text-xl font-semibold text-white pr-4">
+        <span className="text-lg md:text-xl font-semibold text-[var(--color-text-primary)] pr-4">
           {faq.question}
         </span>
-        <span className="shrink-0 text-white/60">
+        <span className="shrink-0 text-[var(--color-accent)]">
           <svg
             className={`size-6 transition-transform duration-300 ${
               isOpen ? "rotate-45" : ""
@@ -67,7 +67,7 @@ function FAQItem({ faq, isOpen, onToggle }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-base md:text-lg text-white/70 leading-relaxed">
+            <p className="pb-6 text-base md:text-lg text-[var(--color-text-secondary)] leading-relaxed">
               {faq.answer}
             </p>
           </motion.div>
@@ -85,13 +85,8 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute right-1/4 top-1/4 h-[400px] w-[400px] animate-pulse rounded-full bg-red-600/10 blur-[100px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-4xl px-6 py-20 md:py-28">
+    <section id="faq" className="relative bg-[var(--color-bg-primary)]">
+      <div className="mx-auto max-w-4xl px-6 py-20 md:py-28">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -100,11 +95,10 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+          <span className="badge-accent mb-4 inline-block">FAQ</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-text-primary)]">
             Frequently Asked{" "}
-            <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
-              Questions
-            </span>
+            <span className="text-[var(--color-accent)]">Questions</span>
           </h2>
         </motion.div>
 
@@ -114,7 +108,7 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent p-6 md:p-10"
+          className="card-dashed"
         >
           {faqs.map((faq, index) => (
             <FAQItem
@@ -124,6 +118,29 @@ export default function FAQ() {
               onToggle={() => handleToggle(index)}
             />
           ))}
+        </motion.div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-lg text-[var(--color-text-secondary)] mb-6">
+            Still have questions? Let's talk.
+          </p>
+          <a href="#book" className="btn-primary">
+            Book a Free Call
+            <svg
+              className="size-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M12.293 3.293a1 1 0 011.414 0l4.999 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L15.586 11H3a1 1 0 110-2h12.586l-3.293-3.293a1 1 0 010-1.414z" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>
