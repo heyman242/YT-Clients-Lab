@@ -43,8 +43,8 @@ function App() {
         <Navbar sticky={true} />
         <Main />
         <Stats />
+           <Results />
         <ProofGallery />
-        <Results />
         <Method />
         <WorkExamples />
         <BookCall />
