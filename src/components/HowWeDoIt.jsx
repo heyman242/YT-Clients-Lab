@@ -18,8 +18,8 @@ function ytId(url = "") {
 
 // 4 videos for 2x2 grid
 const videos = [
-  { url: "https://www.youtube.com/watch?v=ZSH20Y9V0d8" },
-  { url: "https://www.youtube.com/watch?v=lqt1xZwJBjA" },
+  { url: "https://www.youtube.com/watch?v=a07-0Eglpx0" },
+  { url: "https://www.youtube.com/watch?v=fzgLbNK9b50" },
 ];
 
 function VideoCard({ item, index }) {
